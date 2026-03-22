@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://dmuoum3fomlvj"]
+
+[ext_resource type="Texture2D" uid="uid://d4f4ebe2b74qf" path="res://assets/hex tile.png" id="1_viopr"]
+[ext_resource type="Texture2D" uid="uid://bacxaq0tn4xh4" path="res://assets/hex tile blue.png" id="2_wptpx"]
+[ext_resource type="Texture2D" uid="uid://580j0hvd6b7u" path="res://assets/hex tile green.png" id="3_fxbsx"]
+[ext_resource type="Texture2D" uid="uid://dsnoxth3c6u5e" path="res://assets/hex tile red.png" id="4_oofev"]
+[ext_resource type="Texture2D" uid="uid://c68txwva0ybd7" path="res://assets/icon.svg" id="5_oofev"]
+[ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
+texture = ExtResource("1_viopr")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sp4s"]
+texture = ExtResource("2_wptpx")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxju2"]
+texture = ExtResource("3_fxbsx")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l28mh"]
+texture = ExtResource("4_oofev")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_odutk"]
+tile_shape = 3
+tile_size = Vector2i(100, 100)
+sources/0 = SubResource("TileSetAtlasSource_1bbkd")
+sources/1 = SubResource("TileSetAtlasSource_3sp4s")
+sources/2 = SubResource("TileSetAtlasSource_pxju2")
+sources/3 = SubResource("TileSetAtlasSource_l28mh")
+
+[node name="Node2D" type="Node2D" unique_id=938107099]
+
+[node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
+position = Vector2(0, 24)
+tile_map_data = PackedByteArray("AAD+////AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAgAAAAAAAAD//wEAAAAAAAAAAAD//wIAAgAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAACAP//AgAAAAAAAAACAAAAAgAAAAAAAAABAAEAAgAAAAAAAAABAAIAAgAAAAAAAAD+/wIAAgAAAAAAAAD9/wEAAgAAAAAAAAD9/wAAAgAAAAAAAAD8////AgAAAAAAAAD7////AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAADAAAAAwAAAAAAAAACAAEAAwAAAAAAAAACAAIAAwAAAAAAAAABAAMAAwAAAAAAAAAAAAMAAwAAAAAAAAD//wMAAwAAAAAAAAD+/wMAAwAAAAAAAAD9/wMAAwAAAAAAAAD9/wIAAwAAAAAAAAD8/wEAAwAAAAAAAAD8/wAAAwAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///v/AwAAAAAAAAD///z/AgAAAAAAAAD///3/AAAAAAAAAAD///7/AQAAAAAAAAAAAPv/AwAAAAAAAAAAAPz/AgAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AQAAAAAAAAD8//3/AwAAAAAAAAD8//7/AwAAAAAAAAD9//v/AwAAAAAAAAD9//z/AwAAAAAAAAD9//3/AgAAAAAAAAD9//7/AgAAAAAAAAD+//v/AwAAAAAAAAD+//z/AgAAAAAAAAABAP7/AAAAAAAAAAABAP3/AgAAAAAAAAACAP7/AgAAAAAAAAABAPz/AgAAAAAAAAABAPv/AwAAAAAAAAACAPz/AwAAAAAAAAACAP3/AwAAAAAAAAA=")
+tile_set = SubResource("TileSet_odutk")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1286385923]
+
+[node name="player" type="Sprite2D" parent="." unique_id=2060810026]
+position = Vector2(1.1920929e-07, -1.4210855e-14)
+scale = Vector2(0.3203125, 0.3203125)
+texture = ExtResource("5_oofev")
+
+[node name="cursor" type="Sprite2D" parent="." unique_id=1761886414]
+scale = Vector2(0.1328125, 0.1328125)
+texture = ExtResource("5_oofev")
+script = ExtResource("6_3sp4s")
