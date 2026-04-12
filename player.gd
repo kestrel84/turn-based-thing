@@ -9,8 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var mousepos = get_global_mouse_position()
-	#print(map.local_to_map(Vector2(mousepos.x, mousepos.y - 24)))
-	position = map.map_to_local(map.local_to_map(Vector2(mousepos.x, mousepos.y - 17.5)))
-	position.y += 17.5
+	if Input.is_action_just_pressed("click"):
+		var mousepos = get_global_mouse_position()
+		position = map.map_to_local(map.local_to_map(Vector2(mousepos.x, mousepos.y - 17.5)))
+		position.y += 17.5
 	pass
