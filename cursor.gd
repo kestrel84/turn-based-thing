@@ -11,6 +11,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var mousepos = get_global_mouse_position()
 	#print(map.local_to_map(Vector2(mousepos.x, mousepos.y - 24)))
-	position = map.map_to_local(map.local_to_map(Vector2(mousepos.x, mousepos.y - 17.5)))
-	position.y += 17.5
+	position = map.map_to_local(map.local_to_map(Vector2(mousepos.x, mousepos.y)))
+	#position.y += 17.5
 	pass

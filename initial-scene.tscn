@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://580j0hvd6b7u" path="res://assets/hex tile green.png" id="3_fxbsx"]
 [ext_resource type="Texture2D" uid="uid://dsnoxth3c6u5e" path="res://assets/hex tile red.png" id="4_oofev"]
 [ext_resource type="Texture2D" uid="uid://c68txwva0ybd7" path="res://assets/icon.svg" id="5_oofev"]
+[ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
 [ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
+[ext_resource type="Script" uid="uid://cdcriv0oixeuv" path="res://path.gd" id="9_l28mh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
 texture = ExtResource("1_viopr")
@@ -28,6 +30,15 @@ texture = ExtResource("4_oofev")
 texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xeg3k"]
+texture = ExtResource("5_pxju2")
+margins = Vector2i(50, 42)
+texture_region_size = Vector2i(100, 70)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_odutk"]
 tile_shape = 3
 tile_size = Vector2i(100, 70)
@@ -35,19 +46,19 @@ sources/0 = SubResource("TileSetAtlasSource_1bbkd")
 sources/1 = SubResource("TileSetAtlasSource_3sp4s")
 sources/2 = SubResource("TileSetAtlasSource_pxju2")
 sources/3 = SubResource("TileSetAtlasSource_l28mh")
+sources/4 = SubResource("TileSetAtlasSource_xeg3k")
 
 [node name="Node2D" type="Node2D" unique_id=938107099]
 
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
-position = Vector2(0, 17.5)
-tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAMAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAABAP//AAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAMAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAABAP//AAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAA=")
 tile_set = SubResource("TileSet_odutk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1286385923]
 
 [node name="player" type="Sprite2D" parent="." unique_id=2060810026]
 position = Vector2(1.1920929e-07, -1.4210855e-14)
-scale = Vector2(0.3203125, 0.3203125)
+scale = Vector2(0.27, 0.27)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_pxju2")
 
@@ -55,3 +66,7 @@ script = ExtResource("6_pxju2")
 scale = Vector2(0.1328125, 0.1328125)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_3sp4s")
+
+[node name="path" type="Line2D" parent="cursor" unique_id=517834555]
+width = 41.085
+script = ExtResource("9_l28mh")
