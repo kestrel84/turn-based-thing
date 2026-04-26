@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
 [ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
+[ext_resource type="Texture2D" uid="uid://bgqmh3wnypd2e" path="res://assets/attack.png" id="8_xeg3k"]
 [ext_resource type="Script" uid="uid://cdcriv0oixeuv" path="res://path.gd" id="9_l28mh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
@@ -57,16 +58,21 @@ tile_set = SubResource("TileSet_odutk")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1286385923]
 
 [node name="player" type="Sprite2D" parent="." unique_id=2060810026]
-position = Vector2(1.1920929e-07, -1.4210855e-14)
+position = Vector2(0, -16.5)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_pxju2")
 
-[node name="cursor" type="Sprite2D" parent="." unique_id=1761886414]
-scale = Vector2(0.1328125, 0.1328125)
+[node name="attack" type="Sprite2D" parent="player" unique_id=956043022]
+position = Vector2(214.8148, -9.259262)
+scale = Vector2(0.80864197, 0.80864197)
+texture = ExtResource("8_xeg3k")
+
+[node name="cursor" type="Sprite2D" parent="player" unique_id=1761886414]
+scale = Vector2(0.49189815, 0.49189815)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_3sp4s")
 
-[node name="path" type="Line2D" parent="cursor" unique_id=517834555]
+[node name="path" type="Line2D" parent="player/cursor" unique_id=517834555]
 width = 41.085
 script = ExtResource("9_l28mh")

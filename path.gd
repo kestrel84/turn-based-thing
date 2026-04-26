@@ -1,7 +1,7 @@
 extends Line2D
 
-@onready var map: TileMapLayer = $"../../map"
-@onready var player: Sprite2D = $"../../player"
+@onready var map: TileMapLayer = $"../../../map"
+@onready var player: Sprite2D = $"../../../player"
 @onready var cursor: Sprite2D = $".."
 
 var astar_grid: AStarGrid2D = AStarGrid2D.new()
@@ -16,8 +16,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var player_map_coords = Vector2i(map.local_to_map(player.position))
-	var cursor_map_coords = Vector2i(map.local_to_map(cursor.position))
+	var player_map_coords = Vector2i(map.local_to_map(player.global_position))
+	var cursor_map_coords = Vector2i(map.local_to_map(cursor.global_position))
 	
 	var path_map_coords = astar_grid.get_point_path(player_map_coords, cursor_map_coords)
 	
