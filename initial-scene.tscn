@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
 [ext_resource type="Texture2D" uid="uid://bgqmh3wnypd2e" path="res://assets/attack.png" id="8_xeg3k"]
 [ext_resource type="Script" uid="uid://cdcriv0oixeuv" path="res://path.gd" id="9_l28mh"]
+[ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
+[ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://enemy.gd" id="11_im6mf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
 texture = ExtResource("1_viopr")
@@ -49,6 +51,9 @@ sources/2 = SubResource("TileSetAtlasSource_pxju2")
 sources/3 = SubResource("TileSetAtlasSource_l28mh")
 sources/4 = SubResource("TileSetAtlasSource_xeg3k")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_im6mf"]
+radius = 22.0
+
 [node name="Node2D" type="Node2D" unique_id=938107099]
 
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
@@ -63,11 +68,6 @@ scale = Vector2(0.27, 0.27)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_pxju2")
 
-[node name="attack" type="Sprite2D" parent="player" unique_id=956043022]
-position = Vector2(214.8148, -9.259262)
-scale = Vector2(0.80864197, 0.80864197)
-texture = ExtResource("8_xeg3k")
-
 [node name="cursor" type="Sprite2D" parent="player" unique_id=1761886414]
 scale = Vector2(0.49189815, 0.49189815)
 texture = ExtResource("5_oofev")
@@ -76,3 +76,26 @@ script = ExtResource("6_3sp4s")
 [node name="path" type="Line2D" parent="player/cursor" unique_id=517834555]
 width = 41.085
 script = ExtResource("9_l28mh")
+
+[node name="attack" type="Area2D" parent="player" unique_id=1530286748]
+position = Vector2(329.6296, -12.962963)
+
+[node name="attack sprite" type="Sprite2D" parent="player/attack" unique_id=956043022]
+position = Vector2(-85, 0)
+scale = Vector2(0.80864197, 0.80864197)
+texture = ExtResource("8_xeg3k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player/attack" unique_id=2125764493]
+position = Vector2(-85, 0)
+polygon = PackedVector2Array(-96.296295, -200, -55.555542, -207.40741, -7.4074097, -188.88889, 40.740753, -144.44443, 85.18518, -62.96296, 103.703705, 22.222221, 85.18518, 111.111115, 37.03705, 188.88889, -18.518524, 218.51852, 18.518524, 162.96295, 62.96295, 107.40741, 74.074066, 40.740738, 81.481476, -18.518517, 59.259277, -77.77778, 14.814819, -144.44443, -55.555542, -192.59259, -96.296295, -200)
+
+[node name="enemy" type="Area2D" parent="." unique_id=1519383501]
+position = Vector2(-99.2, -13.775)
+script = ExtResource("11_im6mf")
+
+[node name="enemy sprite" type="Sprite2D" parent="enemy" unique_id=1451242318]
+scale = Vector2(0.14833334, 0.14833334)
+texture = ExtResource("11_a6wsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=217128363]
+shape = SubResource("CircleShape2D_im6mf")
