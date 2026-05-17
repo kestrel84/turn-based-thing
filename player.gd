@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		if attacking:
 			attack()
 		else:
-			position = map.map_to_local(map.local_to_map(Vector2(mousepos.x, mousepos.y)))
+			position = cursor.global_position
 	
 	if Input.is_action_just_pressed("attack one"):
 		if attacking:

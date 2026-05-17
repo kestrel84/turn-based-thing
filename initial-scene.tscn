@@ -1,36 +1,18 @@
 [gd_scene format=4 uid="uid://dmuoum3fomlvj"]
 
 [ext_resource type="Texture2D" uid="uid://d4f4ebe2b74qf" path="res://assets/hex tile.png" id="1_viopr"]
-[ext_resource type="Texture2D" uid="uid://bacxaq0tn4xh4" path="res://assets/hex tile blue.png" id="2_wptpx"]
-[ext_resource type="Texture2D" uid="uid://580j0hvd6b7u" path="res://assets/hex tile green.png" id="3_fxbsx"]
-[ext_resource type="Texture2D" uid="uid://dsnoxth3c6u5e" path="res://assets/hex tile red.png" id="4_oofev"]
+[ext_resource type="Script" uid="uid://cngvb4giv1ipf" path="res://map.gd" id="3_xeg3k"]
 [ext_resource type="Texture2D" uid="uid://c68txwva0ybd7" path="res://assets/icon.svg" id="5_oofev"]
 [ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
 [ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
 [ext_resource type="Texture2D" uid="uid://bgqmh3wnypd2e" path="res://assets/attack.png" id="8_xeg3k"]
-[ext_resource type="Script" uid="uid://cdcriv0oixeuv" path="res://path.gd" id="9_l28mh"]
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
 [ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://enemy.gd" id="11_im6mf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
 texture = ExtResource("1_viopr")
 texture_region_size = Vector2i(100, 70)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sp4s"]
-texture = ExtResource("2_wptpx")
-texture_region_size = Vector2i(100, 100)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pxju2"]
-texture = ExtResource("3_fxbsx")
-texture_region_size = Vector2i(100, 100)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l28mh"]
-texture = ExtResource("4_oofev")
-texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xeg3k"]
@@ -46,9 +28,6 @@ texture_region_size = Vector2i(100, 70)
 tile_shape = 3
 tile_size = Vector2i(100, 70)
 sources/0 = SubResource("TileSetAtlasSource_1bbkd")
-sources/1 = SubResource("TileSetAtlasSource_3sp4s")
-sources/2 = SubResource("TileSetAtlasSource_pxju2")
-sources/3 = SubResource("TileSetAtlasSource_l28mh")
 sources/4 = SubResource("TileSetAtlasSource_xeg3k")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im6mf"]
@@ -57,8 +36,9 @@ radius = 22.0
 [node name="Node2D" type="Node2D" unique_id=938107099]
 
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
-tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAMAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAABAP//AAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAMAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAABAP//AAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+////AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_odutk")
+script = ExtResource("3_xeg3k")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1286385923]
 
@@ -75,7 +55,6 @@ script = ExtResource("6_3sp4s")
 
 [node name="path" type="Line2D" parent="player/cursor" unique_id=517834555]
 width = 41.085
-script = ExtResource("9_l28mh")
 
 [node name="attack" type="Area2D" parent="player" unique_id=1530286748]
 position = Vector2(329.6296, -12.962963)
