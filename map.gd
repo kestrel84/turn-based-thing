@@ -74,7 +74,12 @@ func disable_tile_global(pos: Vector2):
 	var map_coords = local_to_map(to_local(pos))
 	var astar_id = astar_dict.find_key(map_coords)
 	astar_hex_grid.set_point_disabled(astar_id, true)
-	pass
+
+# as above, but enables instead of disables
+func enable_tile_global(pos: Vector2):
+	var map_coords = local_to_map(to_local(pos))
+	var astar_id = astar_dict.find_key(map_coords)
+	astar_hex_grid.set_point_disabled(astar_id, false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
