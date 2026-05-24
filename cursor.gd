@@ -11,12 +11,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# temp for debug
-	#if Input.is_action_just_pressed("click"):
-		#var mousepos = get_global_mouse_position()
-		#print(map.local_to_map(Vector2(mousepos.x, mousepos.y)))
-	
 	var mousepos = get_global_mouse_position() 
+	
+	# temp for debug
+	if Input.is_action_just_pressed("click"):
+		print("mouse position in map coords: ", map.local_to_map(mousepos))
+		print("mouse neighbours: ", map.get_neighbours(map.local_to_map(mousepos)))
 	
 	# get the map coords of the player and the mouse cursor
 	var player_map_coords = Vector2i(map.local_to_map(player.global_position))

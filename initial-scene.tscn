@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dmuoum3fomlvj"]
 
-[ext_resource type="Texture2D" uid="uid://d4f4ebe2b74qf" path="res://assets/hex tile.png" id="1_viopr"]
+[ext_resource type="Texture2D" uid="uid://8224o5rblqow" path="res://assets/hexagon tile red.svg" id="2_a6wsr"]
+[ext_resource type="Texture2D" uid="uid://yq4e7s7p5ewh" path="res://assets/hexagon tile.svg" id="2_xeg3k"]
 [ext_resource type="Script" uid="uid://cngvb4giv1ipf" path="res://map.gd" id="3_xeg3k"]
 [ext_resource type="Texture2D" uid="uid://c68txwva0ybd7" path="res://assets/icon.svg" id="5_oofev"]
 [ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
@@ -10,8 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
 [ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://enemy.gd" id="11_im6mf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bbkd"]
-texture = ExtResource("1_viopr")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6wsr"]
+texture = ExtResource("2_xeg3k")
+texture_region_size = Vector2i(100, 70)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_im6mf"]
+texture = ExtResource("2_a6wsr")
 texture_region_size = Vector2i(100, 70)
 0:0/0 = 0
 
@@ -27,8 +33,9 @@ texture_region_size = Vector2i(100, 70)
 [sub_resource type="TileSet" id="TileSet_odutk"]
 tile_shape = 3
 tile_size = Vector2i(100, 70)
-sources/0 = SubResource("TileSetAtlasSource_1bbkd")
 sources/4 = SubResource("TileSetAtlasSource_xeg3k")
+sources/1 = SubResource("TileSetAtlasSource_a6wsr")
+sources/2 = SubResource("TileSetAtlasSource_im6mf")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im6mf"]
 radius = 22.0
@@ -36,7 +43,7 @@ radius = 22.0
 [node name="Node2D" type="Node2D" unique_id=938107099]
 
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
-tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAMAAAAAAAAAAAD9/wMAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wAAAAAAAAAAAAD7////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAABAP//AAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+////AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9////AQAAAAAAAAABAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD/////AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP7/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAABAAMAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wAAAQAAAAAAAAD7////AQAAAAAAAAD8//7/AQAAAAAAAAD8//3/AQAAAAAAAAD9//z/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAABAP//AQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+////AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_odutk")
 script = ExtResource("3_xeg3k")
 

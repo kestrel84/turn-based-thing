@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4f4ebe2b74qf"
-path="res://.godot/imported/hex tile.png-7ce3058a7f6271bd8ba743fbd770fb8b.ctex"
+uid="uid://8224o5rblqow"
+path="res://.godot/imported/hexagon tile red.svg-72c31a91712bbe52eefa790d2a359468.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hex tile.png"
-dest_files=["res://.godot/imported/hex tile.png-7ce3058a7f6271bd8ba743fbd770fb8b.ctex"]
+source_file="res://assets/hexagon tile red.svg"
+dest_files=["res://.godot/imported/hexagon tile red.svg-72c31a91712bbe52eefa790d2a359468.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
