@@ -3,8 +3,19 @@ extends TileMapLayer
 # a list of IDs of tile atlases in which the tiles are solid (mountains or whatever)
 @export var solid_blocks: Array[int] = [4]
 
+var neighbours: Array[TileSet.CellNeighbor] = [
+	TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE, 
+	TileSet.CELL_NEIGHBOR_RIGHT_SIDE,
+	TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE,
+	TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE,
+	TileSet.CELL_NEIGHBOR_LEFT_SIDE,
+	TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE
+]
+
 var astar_hex_grid: AStar2D = AStar2D.new()
 var astar_dict: Dictionary[int, Vector2i] = {}
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,7 +78,7 @@ func get_neighbours(pos: Vector2i) -> Array[Vector2i]:
 		get_neighbor_cell(pos, TileSet.CELL_NEIGHBOR_LEFT_SIDE),
 		get_neighbor_cell(pos, TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE),
 	]
-		
+
 # given an angle (from the +x axis, in radians, as given by the angle() function), it calculates the neighbouring hexagon at that angle.
 func angle_to_tileset_neighbour(angle: float) -> TileSet.CellNeighbor:
 	angle = rad_to_deg(angle)
