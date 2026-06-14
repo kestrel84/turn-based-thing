@@ -3,6 +3,8 @@ extends TileMapLayer
 # a list of IDs of tile atlases in which the tiles are solid (mountains or whatever)
 @export var solid_blocks: Array[int] = [4]
 
+@export var display_coords: bool = true
+
 var neighbours: Array[TileSet.CellNeighbor] = [
 	TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE, 
 	TileSet.CELL_NEIGHBOR_RIGHT_SIDE,
@@ -13,7 +15,12 @@ var neighbours: Array[TileSet.CellNeighbor] = [
 ]
 
 var astar_hex_grid: AStar2D = AStar2D.new()
-var astar_dict: Dictionary[int, Vector2i] = {}
+var astar_dict: Dictionary[int, Vector2i] = {} # each point in the astar2d has an ID; this is for mapping between said ID and the map coords and back
+
+# a dict for storing all currently active objects which can be hit by an attack. It stores where they are and a callback to call when they get hit.
+# said callback should take a single argument, a list of the groups.
+# Currently only one hittable object per tile is supported.
+var hittable_objects: Dictionary[Vector2i, Callable] 
 
 
 
@@ -22,17 +29,18 @@ func _ready() -> void:
 	#region set up the astar2d with the hexagon grid
 	var id_counter: int = 0
 	
-	# add all the points in consideration (at the moment, just those between -10 and 10) to a dict, giving each one a unique id, then add it to the astar2d.
+	# add all the points in consideration (at the moment, just those between -20 and 20) to a dict, giving each one a unique id, then add it to the astar2d.
 	# this is also a future reference for converting tilemap coordinates into astar2d ids.
 	for x in range(-20, 20):
 		for y in range(-20, 20):
 			var tile_coords = Vector2i(x, y)
 			
 			# DEBUG: display all tile coords
-			var text = Label.new()
-			text.set_position(Vector2(map_to_local(tile_coords).x - 20, map_to_local(tile_coords).y - 15))
-			text.text = "%s" % tile_coords
-			add_child(text)
+			if display_coords: 
+				var text = Label.new()
+				text.set_position(Vector2(map_to_local(tile_coords).x - 20, map_to_local(tile_coords).y - 15))
+				text.text = "%s" % tile_coords
+				add_child(text)
 			# end debug
 			
 			astar_dict[id_counter] = tile_coords
