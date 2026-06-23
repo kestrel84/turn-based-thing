@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
 [ext_resource type="PackedScene" uid="uid://d138fuoj61wvw" path="res://scenes/attack-arc.tscn" id="8_xeg3k"]
+[ext_resource type="PackedScene" uid="uid://cs0b184moawa6" path="res://scenes/attack_line.tscn" id="9_a6wsr"]
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
 [ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://enemy.gd" id="11_im6mf"]
 
@@ -64,6 +65,9 @@ script = ExtResource("6_3sp4s")
 width = 41.085
 
 [node name="attack-arc" parent="player" unique_id=946821444 node_paths=PackedStringArray("map") instance=ExtResource("8_xeg3k")]
+map = NodePath("../../map")
+
+[node name="attack-line" parent="player" unique_id=633335252 node_paths=PackedStringArray("map") instance=ExtResource("9_a6wsr")]
 map = NodePath("../../map")
 
 [node name="enemy" type="Area2D" parent="." unique_id=1519383501 groups=["enemies"]]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cs0b184moawa6"]
+
+[ext_resource type="Texture2D" uid="uid://8224o5rblqow" path="res://assets/hexagon tile red.svg" id="1_lwpe1"]
+[ext_resource type="Script" uid="uid://d2afam2mlruoy" path="res://scenes/attack_line.gd" id="1_qpds8"]
+[ext_resource type="Texture2D" uid="uid://buop7lv4fwaqs" path="res://assets/explosion 1/explosion-f1.png" id="2_ij4b4"]
+[ext_resource type="Texture2D" uid="uid://cebk3pdk7gwtn" path="res://assets/explosion 1/explosion-f2.png" id="3_qpds8"]
+[ext_resource type="Texture2D" uid="uid://t5hdf35u8j2x" path="res://assets/explosion 1/explosion-f3.png" id="4_i6wjm"]
+[ext_resource type="Texture2D" uid="uid://qd7oc7o0auty" path="res://assets/explosion 1/explosion-f4.png" id="5_s4j8n"]
+[ext_resource type="Texture2D" uid="uid://7y15k3go0txn" path="res://assets/explosion 1/explosion-f5.png" id="6_xa60w"]
+[ext_resource type="Texture2D" uid="uid://fp4kj0ee2xi8" path="res://assets/explosion 1/explosion-f6.png" id="7_e8kjs"]
+[ext_resource type="Texture2D" uid="uid://d1k4xpwjmhhl2" path="res://assets/explosion 1/explosion-f7.png" id="8_oq6wi"]
+[ext_resource type="Texture2D" uid="uid://ddi8sfhqxsoc4" path="res://assets/explosion 1/explosion-f8.png" id="9_m75jt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpakb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ij4b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qpds8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i6wjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s4j8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xa60w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e8kjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oq6wi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m75jt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="attack-line" type="Node2D" unique_id=633335252 node_paths=PackedStringArray("attack_sprite", "attack_anim")]
+script = ExtResource("1_qpds8")
+attack_sprite = NodePath("attack sprite")
+attack_anim = NodePath("explosion sprite")
+
+[node name="attack sprite" type="Sprite2D" parent="." unique_id=1372715383]
+visible = false
+position = Vector2(0, -5.5555553)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("1_lwpe1")
+
+[node name="explosion sprite" type="AnimatedSprite2D" parent="." unique_id=1679945638]
+visible = false
+scale = Vector2(1.876, 1.876)
+sprite_frames = SubResource("SpriteFrames_kpakb")
