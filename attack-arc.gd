@@ -4,6 +4,8 @@ extends Node2D
 @export var map: TileMapLayer
 # the base sprite to use for attacked areas
 @export var attack_sprite: Sprite2D
+# the animated sprite to play when an attack goes off 
+@export var attack_anim: AnimatedSprite2D
 
 # an array to hold the current sprites in use
 var sprites: Array[Sprite2D] = []
@@ -77,10 +79,17 @@ func start_attacking():
 Resolves the attack, damaging the appropriate entities in the hitbox.
 """
 func attack():
-	print("resolving attack (nonfunctional atm)")
+	print("resolving attack")
 	
 	# TODO: resolve which enemies/players/whatever are in the hitbox, probably according to the map.
 	for tile in current_targets:
+		var dupe = attack_anim.duplicate()
+		dupe.visible = true
+		dupe.connect("animation_finished", func (): dupe.queue_free()) # self-destruct on animation finished
+		get_tree().root.add_child(dupe) # add to scene root to prevent moving with the player
+		dupe.global_position = map.map_to_local(tile)
+		dupe.play()
+		
 		var callback = map.hittable_objects.get(tile)
 		if callback:
 			callback.call(get_parent().get_groups())
@@ -93,7 +102,7 @@ func attack():
 
 
 """
-Deactivates the hitboxes without doing anything else.
+Deactivates the hitboxes without resolving the attack.
 """
 func cancel_attack():
 	print("cancelling attack")
