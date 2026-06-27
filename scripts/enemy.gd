@@ -1,8 +1,9 @@
-extends Area2D
+extends Node2D
 
-@onready var map = $"../map"
+@onready var map = $"%map"
 
 @export var MAX_HEALTH: int = 4
+@export var TURN_ID: int = -1
 
 var health: int
 

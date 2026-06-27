@@ -39,17 +39,6 @@ func _process(_delta: float) -> void:
 			attacked_tile = map.get_neighbor_cell(attacked_tile, attack_neighbour)
 			current_targets.append(attacked_tile)
 		
-		# assemble the map coordinates of the attacked tile and the two either side.
-		#current_targets = [attacked_tile, map.get_neighbor_cell(player_map_pos, neighbour_1), map.get_neighbor_cell(player_map_pos, neighbour_2)]
-		
-		
-		# get the actual positions of said side two hitboxes
-		#var attacked_pos_2 = map.map_to_local(map.get_neighbor_cell(player_map_pos, neighbour_1))
-		#var attacked_pos_3 = map.map_to_local(map.get_neighbor_cell(player_map_pos, neighbour_2))
-		
-		# assign them
-		#var attack_positions = [attacked_pos, attacked_pos_2, attacked_pos_3]
-		
 		# convert the attacked map coords to global coords
 		var attack_positions = current_targets.map(func (coord): return map.map_to_local(coord))
 		

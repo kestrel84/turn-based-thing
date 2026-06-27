@@ -1,16 +1,18 @@
 [gd_scene format=4 uid="uid://dmuoum3fomlvj"]
 
+[ext_resource type="Script" uid="uid://c6ui1cmhle3fa" path="res://scripts/gamemaster.gd" id="1_im6mf"]
 [ext_resource type="Texture2D" uid="uid://8224o5rblqow" path="res://assets/hexagon tile red.svg" id="2_a6wsr"]
 [ext_resource type="Texture2D" uid="uid://yq4e7s7p5ewh" path="res://assets/hexagon tile.svg" id="2_xeg3k"]
-[ext_resource type="Script" uid="uid://cngvb4giv1ipf" path="res://map.gd" id="3_xeg3k"]
+[ext_resource type="Script" uid="uid://cngvb4giv1ipf" path="res://scripts/map.gd" id="3_xeg3k"]
 [ext_resource type="Texture2D" uid="uid://c68txwva0ybd7" path="res://assets/icon.svg" id="5_oofev"]
 [ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
-[ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://cursor.gd" id="6_3sp4s"]
-[ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://player.gd" id="6_pxju2"]
+[ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://scripts/cursor.gd" id="6_3sp4s"]
+[ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://scripts/player.gd" id="6_pxju2"]
 [ext_resource type="PackedScene" uid="uid://d138fuoj61wvw" path="res://scenes/attack-arc.tscn" id="8_xeg3k"]
 [ext_resource type="PackedScene" uid="uid://cs0b184moawa6" path="res://scenes/attack_line.tscn" id="9_a6wsr"]
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
-[ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://enemy.gd" id="11_im6mf"]
+[ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://scripts/enemy.gd" id="11_im6mf"]
+[ext_resource type="Script" uid="uid://d38hvt28guslo" path="res://scripts/ui.gd" id="13_k870t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6wsr"]
 texture = ExtResource("2_xeg3k")
@@ -38,17 +40,20 @@ sources/4 = SubResource("TileSetAtlasSource_xeg3k")
 sources/1 = SubResource("TileSetAtlasSource_a6wsr")
 sources/2 = SubResource("TileSetAtlasSource_im6mf")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_im6mf"]
-radius = 22.0
-
 [node name="Node2D" type="Node2D" unique_id=938107099]
 
+[node name="gamemaster" type="Node2D" parent="." unique_id=479281941]
+unique_name_in_owner = true
+script = ExtResource("1_im6mf")
+
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
-tile_map_data = PackedByteArray("AAD9////AQAAAAAAAAABAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD/////AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP7/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAABAAMAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wAAAQAAAAAAAAD7////AQAAAAAAAAD8//7/AQAAAAAAAAD8//3/AQAAAAAAAAD9//z/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAABAP//AQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/BAAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+////AQAAAAAAAAA=")
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAD9////AQAAAAAAAAABAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAD//wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD/////AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD///3/AQAAAAAAAAAAAP3/AQAAAAAAAAABAP7/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAABAAMAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wIAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wAAAQAAAAAAAAD7////AQAAAAAAAAD8//7/AQAAAAAAAAD8//3/AQAAAAAAAAD9//z/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAABAP//AQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAIABAAAAAAAAAABAAIABAAAAAAAAAABAAEABAAAAAAAAAACAAAABAAAAAAAAAACAP//BAAAAAAAAAD//wIABAAAAAAAAAD+/wIABAAAAAAAAAD9/wEABAAAAAAAAAD9/wAABAAAAAAAAAD8////BAAAAAAAAAD9//7/BAAAAAAAAAD9//3/BAAAAAAAAAD+//z/BAAAAAAAAAD///z/BAAAAAAAAAAAAPz/BAAAAAAAAAABAPz/AQAAAAAAAAABAP3/BAAAAAAAAAACAP7/BAAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAD//wAAAQAAAAAAAAD+////AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_odutk")
 script = ExtResource("3_xeg3k")
+display_coords = false
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1286385923]
+[node name="camera" type="Camera2D" parent="." unique_id=1286385923]
 
 [node name="player" type="Sprite2D" parent="." unique_id=2060810026 groups=["players"]]
 position = Vector2(0, -16.5)
@@ -70,7 +75,7 @@ map = NodePath("../../map")
 [node name="attack-line" parent="player" unique_id=633335252 node_paths=PackedStringArray("map") instance=ExtResource("9_a6wsr")]
 map = NodePath("../../map")
 
-[node name="enemy" type="Area2D" parent="." unique_id=1519383501 groups=["enemies"]]
+[node name="enemy" type="Node2D" parent="." unique_id=1567290742 groups=["enemies"]]
 position = Vector2(-99.2, -13.775)
 script = ExtResource("11_im6mf")
 
@@ -78,5 +83,18 @@ script = ExtResource("11_im6mf")
 scale = Vector2(0.14833334, 0.14833334)
 texture = ExtResource("11_a6wsr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=217128363]
-shape = SubResource("CircleShape2D_im6mf")
+[node name="ui" type="Control" parent="." unique_id=1698161239]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+script = ExtResource("13_k870t")
+
+[node name="turn indicator" type="Label" parent="ui" unique_id=750737427]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "CURRENT TURN: PLAYER"
+horizontal_alignment = 1

@@ -1,8 +1,11 @@
 extends Sprite2D
 
-@onready var map = $"../../map"
+@onready var map = $"%map"
 @onready var player: Sprite2D = $".."
 @onready var path: Line2D = $"path"
+
+
+var path_map_coords
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,15 +26,22 @@ func _process(delta: float) -> void:
 	var cursor_map_coords = Vector2i(map.local_to_map(Vector2(mousepos.x, mousepos.y)))
 	
 	# calculate the path between them, with calculation of partial paths for when the cursor is e.g. out of the map
-	var path_map_coords = Array(map.astar_hex_grid.get_point_path(
+	path_map_coords = Array(map.astar_hex_grid.get_point_path(
 		map.astar_dict.find_key(player_map_coords), 
 		map.astar_dict.find_key(cursor_map_coords),
 		true
 	))
 	
-	# update position of cursor image and path line
+	# trim to player's remaining speed
+	# note: since this is an array of coords, the length of the array is always one more than the length of the path
+	path_map_coords = path_map_coords.slice(0, player.remaining_speed + 1) 
+	
+	
+	# update position of cursor image
 	global_position = map.map_to_local(path_map_coords.back())
 	
+	
+	# update position of path line
 	var path_coords = path_map_coords.map(map.map_to_local).map(to_local)
 	path.points = PackedVector2Array(path_coords)
 	
