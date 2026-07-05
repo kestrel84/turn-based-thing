@@ -69,19 +69,20 @@ script = ExtResource("6_3sp4s")
 [node name="path" type="Line2D" parent="player/cursor" unique_id=517834555]
 width = 41.085
 
-[node name="attack-arc" parent="player" unique_id=946821444 node_paths=PackedStringArray("map") instance=ExtResource("8_xeg3k")]
-map = NodePath("../../map")
+[node name="attack-arc" parent="player" unique_id=946821444 instance=ExtResource("8_xeg3k")]
 
-[node name="attack-line" parent="player" unique_id=633335252 node_paths=PackedStringArray("map") instance=ExtResource("9_a6wsr")]
-map = NodePath("../../map")
+[node name="attack-line" parent="player" unique_id=633335252 instance=ExtResource("9_a6wsr")]
 
-[node name="enemy" type="Node2D" parent="." unique_id=1567290742 groups=["enemies"]]
+[node name="enemy" type="Node2D" parent="." unique_id=1567290742 node_paths=PackedStringArray("attack") groups=["enemies"]]
 position = Vector2(-99.2, -13.775)
 script = ExtResource("11_im6mf")
+attack = NodePath("attack-line")
 
 [node name="enemy sprite" type="Sprite2D" parent="enemy" unique_id=1451242318]
 scale = Vector2(0.14833334, 0.14833334)
 texture = ExtResource("11_a6wsr")
+
+[node name="attack-line" parent="enemy" unique_id=63181736 instance=ExtResource("9_a6wsr")]
 
 [node name="ui" type="Control" parent="." unique_id=1698161239]
 layout_mode = 3
@@ -98,3 +99,11 @@ offset_right = 1152.0
 offset_bottom = 648.0
 text = "CURRENT TURN: PLAYER"
 horizontal_alignment = 1
+
+[node name="end turn button" type="Button" parent="ui" unique_id=896073400]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 581.0
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "End Turn"

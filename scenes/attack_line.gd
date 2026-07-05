@@ -1,7 +1,7 @@
 extends Node2D
 
 # the map
-@export var map: TileMapLayer
+@onready var map: TileMapLayer = $"%map"
 # the base sprite to use for attacked areas
 @export var attack_sprite: Sprite2D
 # the animated sprite to play when an attack goes off 
@@ -55,6 +55,7 @@ func _process(_delta: float) -> void:
 Triggers the begginning of an attack, showing the hitbox.
 """
 func start_attacking():
+	if (attacking): return
 	print("starting to attack")
 	attacking = true
 	
@@ -70,6 +71,7 @@ func start_attacking():
 Resolves the attack, damaging the appropriate entities in the hitbox.
 """
 func attack():
+	if (!attacking): return
 	print("resolving attack")
 	
 	# TODO: resolve which enemies/players/whatever are in the hitbox, probably according to the map.
@@ -96,6 +98,7 @@ func attack():
 Deactivates the hitboxes without resolving the attack.
 """
 func cancel_attack():
+	if (!attacking): return
 	print("cancelling attack")
 	attacking = false
 	for sprite in sprites:
