@@ -4,6 +4,12 @@ extends Sprite2D
 @onready var attack_1: Node2D = $"attack-arc"
 @onready var attack_2: Node2D = $"attack-line"
 
+@onready var actions_display: VFlowContainer = $"actions display"
+@onready var movement_display: VFlowContainer = $"movement display"
+@export var actions_pip_sprite: PackedScene
+@export var movement_pip_sprite: PackedScene
+
+
 @onready var gamemaster = $"%gamemaster"
 @onready var map = $"%map"
 var current_map_pos: Vector2i
@@ -29,9 +35,11 @@ func _ready() -> void:
 	current_map_pos = map.local_to_map(global_position)
 	map.hittable_objects[current_map_pos] = _on_hit
 	
+	# set up movement and action pips
+	_reset_pips()
 	
 	# set up turn changed watcher
-	gamemaster.turn_changed.connect(func(turn): if (turn == TURN_ID): remaining_speed = SPEED; remaining_actions = ACTIONS) # on turn changed
+	gamemaster.turn_changed.connect(func(turn): if (turn == TURN_ID): remaining_speed = SPEED; remaining_actions = ACTIONS; _reset_pips()) # on turn changed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -49,10 +57,12 @@ func handle_input():
 			attack_1.attack()
 			cursor.visible = true
 			remaining_actions -= 1
+			actions_display.get_child(0).queue_free()
 		elif attack_2.attacking:
 			attack_2.attack()
 			cursor.visible = true
 			remaining_actions -= 1
+			actions_display.get_child(0).queue_free()
 		else:
 			_move()
 	
@@ -88,12 +98,30 @@ func handle_input():
 			attack_2.cancel_attack()
 			cursor.visible = true
 
+func _reset_pips():
+	for node in actions_display.get_children():
+		node.queue_free()
+	
+	for node in movement_display.get_children():
+		node.queue_free()
+	
+	for i in range(remaining_actions):
+		var sprite = actions_pip_sprite.instantiate()
+		actions_display.add_child(sprite)
+		
+	for i in range(remaining_speed):
+		var sprite = movement_pip_sprite.instantiate()
+		movement_display.add_child(sprite)
+
 func _move():
 	map.hittable_objects.erase(current_map_pos) # get rid of last one
 	current_map_pos = map.local_to_map(global_position) # calculate new position
 	map.hittable_objects[current_map_pos] = _on_hit # add it to hittable objects
 	position = cursor.global_position 
-	remaining_speed -= cursor.path_map_coords.size() - 1
+	var distance = cursor.path_map_coords.size() - 1
+	for i in range(distance):
+		movement_display.get_child(i).queue_free()
+	remaining_speed -= distance
 
 func _on_hit(attacker_groups: Array[StringName]):
 	if (!attacker_groups.has("enemies")): return

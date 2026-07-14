@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://d0rfj86rro2u4" path="res://assets/hex tile mountain.png" id="5_pxju2"]
 [ext_resource type="Script" uid="uid://bmeri6bp31rmp" path="res://scripts/cursor.gd" id="6_3sp4s"]
 [ext_resource type="Script" uid="uid://btjoebdhuqayb" path="res://scripts/player.gd" id="6_pxju2"]
+[ext_resource type="PackedScene" uid="uid://cv7duapmy82ea" path="res://scenes/nodes/actions_pip.tscn" id="8_tmct3"]
 [ext_resource type="PackedScene" uid="uid://d138fuoj61wvw" path="res://scenes/attack-arc.tscn" id="8_xeg3k"]
+[ext_resource type="PackedScene" uid="uid://cf32ahki1c6pc" path="res://scenes/nodes/movement_pip.tscn" id="9_7q876"]
 [ext_resource type="PackedScene" uid="uid://cs0b184moawa6" path="res://scenes/attack_line.tscn" id="9_a6wsr"]
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="11_a6wsr"]
 [ext_resource type="Script" uid="uid://curo2qh8643gp" path="res://scripts/enemy.gd" id="11_im6mf"]
@@ -60,6 +62,8 @@ position = Vector2(0, -16.5)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("5_oofev")
 script = ExtResource("6_pxju2")
+actions_pip_sprite = ExtResource("8_tmct3")
+movement_pip_sprite = ExtResource("9_7q876")
 
 [node name="cursor" type="Sprite2D" parent="player" unique_id=1761886414]
 scale = Vector2(0.49189815, 0.49189815)
@@ -72,6 +76,26 @@ width = 41.085
 [node name="attack-arc" parent="player" unique_id=946821444 instance=ExtResource("8_xeg3k")]
 
 [node name="attack-line" parent="player" unique_id=633335252 instance=ExtResource("9_a6wsr")]
+
+[node name="actions display" type="VFlowContainer" parent="player" unique_id=684888105]
+anchors_preset = -1
+offset_left = -88.888885
+offset_top = -61.111107
+offset_right = -68.888885
+offset_bottom = 61.111115
+alignment = 2
+
+[node name="movement display" type="VFlowContainer" parent="player" unique_id=118996826]
+anchors_preset = -1
+anchor_left = 1.021
+anchor_top = 0.023000002
+anchor_right = 1.194
+anchor_bottom = 0.97700006
+offset_left = -64.02133
+offset_top = -64.055115
+offset_right = -63.943115
+offset_bottom = -63.9449
+alignment = 2
 
 [node name="enemy" type="Node2D" parent="." unique_id=1567290742 node_paths=PackedStringArray("attack") groups=["enemies"]]
 position = Vector2(-99.2, -13.775)
@@ -95,8 +119,10 @@ script = ExtResource("13_k870t")
 
 [node name="turn indicator" type="Label" parent="ui" unique_id=750737427]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 104.0
+offset_top = 38.0
+offset_right = 1256.0
+offset_bottom = 686.0
 text = "CURRENT TURN: PLAYER"
 horizontal_alignment = 1
 

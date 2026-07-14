@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cv7duapmy82ea"]
+
+[ext_resource type="Texture2D" uid="uid://ei7o4kkk7m55" path="res://assets/attack_pip.svg" id="1_hu4ml"]
+
+[node name="actions pip 1" type="TextureRect" unique_id=867666646]
+texture = ExtResource("1_hu4ml")

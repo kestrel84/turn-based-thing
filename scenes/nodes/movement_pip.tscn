@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cf32ahki1c6pc"]
+
+[ext_resource type="Texture2D" uid="uid://5clf1iqr8tav" path="res://assets/movement_pip.svg" id="1_unhn6"]
+
+[node name="movement pip 1" type="TextureRect" unique_id=756231642]
+texture = ExtResource("1_unhn6")
