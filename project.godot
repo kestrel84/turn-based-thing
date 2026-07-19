@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="turn-based-thing"
-run/main_scene="uid://dmuoum3fomlvj"
+run/main_scene="uid://kn6s8si52431"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*uid://co7tkf0qa500x"
 
 [global_group]
 

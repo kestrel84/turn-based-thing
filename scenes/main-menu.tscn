@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://kn6s8si52431"]
+
+[ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="1_rk22q"]
+[ext_resource type="Script" uid="uid://bxyo06wm4wwm6" path="res://scripts/main-menu/solo-game-button.gd" id="1_u4kki"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6kyo"]
+font_size = 60
+
+[node name="Control" type="Control" unique_id=766177180]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main menu" type="HBoxContainer" parent="." unique_id=2053057714]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main menu" unique_id=2114447979]
+layout_mode = 2
+
+[node name="title" type="Label" parent="main menu/VBoxContainer" unique_id=195888972]
+layout_mode = 2
+text = "THE TITLE OF THE GAME"
+label_settings = SubResource("LabelSettings_t6kyo")
+
+[node name="buttons" type="VBoxContainer" parent="main menu/VBoxContainer" unique_id=576475868]
+custom_maximum_size = Vector2(207.625, -1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Button" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=762833762]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Solo"
+alignment = 0
+script = ExtResource("1_u4kki")
+
+[node name="Button2" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=931123846]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Host Game"
+alignment = 0
+
+[node name="Button3" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=1216684498]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Join game"
+alignment = 0
+
+[node name="Label" type="Label" parent="main menu/VBoxContainer" unique_id=773470900]
+layout_mode = 2
+text = "v0.1.0
+Haliaetus Studios"
+
+[node name="side img" type="TextureRect" parent="main menu" unique_id=1501796119]
+layout_mode = 2
+texture = ExtResource("1_rk22q")
+stretch_mode = 3
