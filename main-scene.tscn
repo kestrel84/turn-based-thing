@@ -119,10 +119,8 @@ script = ExtResource("15_lyro5")
 
 [node name="turn indicator" type="Label" parent="ui" unique_id=750737427]
 layout_mode = 0
-offset_left = 104.0
-offset_top = 38.0
-offset_right = 1256.0
-offset_bottom = 686.0
+offset_right = 1152.0
+offset_bottom = 648.0
 text = "CURRENT TURN: PLAYER"
 horizontal_alignment = 1
 

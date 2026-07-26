@@ -2,58 +2,143 @@
 
 [ext_resource type="Texture2D" uid="uid://cdurrkhishopm" path="res://assets/enemy.png" id="1_rk22q"]
 [ext_resource type="Script" uid="uid://bxyo06wm4wwm6" path="res://scripts/main-menu/solo-game-button.gd" id="1_u4kki"]
+[ext_resource type="Script" uid="uid://c61g8lcqohsh1" path="res://scripts/main-menu/lobby_display_panel.gd" id="2_hf3n6"]
+[ext_resource type="Script" uid="uid://bw84qtpw5q43d" path="res://scripts/main-menu/join_game_panel.gd" id="3_xg1py"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t6kyo"]
 font_size = 60
 
-[node name="Control" type="Control" unique_id=766177180]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Node" type="Node2D" unique_id=410409041]
 
 [node name="main menu" type="HBoxContainer" parent="." unique_id=2053057714]
-layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+theme_override_constants/separation = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main menu" unique_id=2114447979]
 layout_mode = 2
 
 [node name="title" type="Label" parent="main menu/VBoxContainer" unique_id=195888972]
+custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 text = "THE TITLE OF THE GAME"
 label_settings = SubResource("LabelSettings_t6kyo")
 
-[node name="buttons" type="VBoxContainer" parent="main menu/VBoxContainer" unique_id=576475868]
-custom_maximum_size = Vector2(207.625, -1)
+[node name="HBoxContainer" type="HBoxContainer" parent="main menu/VBoxContainer" unique_id=548516562]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="buttons" type="VBoxContainer" parent="main menu/VBoxContainer/HBoxContainer" unique_id=576475868]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Button" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=762833762]
+[node name="solo button" type="Button" parent="main menu/VBoxContainer/HBoxContainer/buttons" unique_id=762833762]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Solo"
 alignment = 0
 script = ExtResource("1_u4kki")
 
-[node name="Button2" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=931123846]
+[node name="host button" type="Button" parent="main menu/VBoxContainer/HBoxContainer/buttons" unique_id=931123846]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Host Game"
 alignment = 0
 
-[node name="Button3" type="Button" parent="main menu/VBoxContainer/buttons" unique_id=1216684498]
+[node name="join button" type="Button" parent="main menu/VBoxContainer/HBoxContainer/buttons" unique_id=1216684498]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Join game"
 alignment = 0
 
-[node name="Label" type="Label" parent="main menu/VBoxContainer" unique_id=773470900]
+[node name="VBoxContainer" type="VBoxContainer" parent="main menu/VBoxContainer/HBoxContainer" unique_id=880466777]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="lobby display panel" type="Panel" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=481123082 node_paths=PackedStringArray("solo_button", "host_button", "show_join_button")]
+custom_maximum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_hf3n6")
+solo_button = NodePath("../../buttons/solo button")
+host_button = NodePath("../../buttons/host button")
+show_join_button = NodePath("../../buttons/join button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel" unique_id=1911843609]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer" unique_id=1237780917]
+layout_mode = 2
+text = "Lobby"
+horizontal_alignment = 1
+
+[node name="player list" type="VBoxContainer" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer" unique_id=1184195243]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer" unique_id=1121674250]
+layout_mode = 2
+alignment = 1
+
+[node name="start" type="Button" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer/HBoxContainer" unique_id=1948776733]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start
+"
+
+[node name="cancel" type="Button" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer/HBoxContainer" unique_id=2055114977]
+layout_mode = 2
+text = "Cancel"
+
+[node name="leave" type="Button" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel/VBoxContainer/HBoxContainer" unique_id=1847749728]
+layout_mode = 2
+text = "Leave
+"
+
+[node name="join game panel" type="Panel" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=377472853 node_paths=PackedStringArray("solo_button", "host_button", "show_join_button")]
+visible = false
+custom_maximum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_xg1py")
+solo_button = NodePath("../../buttons/solo button")
+host_button = NodePath("../../buttons/host button")
+show_join_button = NodePath("../../buttons/join button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/join game panel" unique_id=1197518956]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/join game panel/VBoxContainer" unique_id=1564368156]
+layout_mode = 2
+text = "Join Game"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/join game panel/VBoxContainer" unique_id=248833376]
+layout_mode = 2
+placeholder_text = "Enter Code Here"
+
+[node name="Button" type="Button" parent="main menu/VBoxContainer/HBoxContainer/VBoxContainer/join game panel/VBoxContainer" unique_id=2102945716]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join"
+
+[node name="credits" type="Label" parent="main menu/VBoxContainer" unique_id=773470900]
 layout_mode = 2
 text = "v0.1.0
 Haliaetus Studios"
@@ -62,3 +147,5 @@ Haliaetus Studios"
 layout_mode = 2
 texture = ExtResource("1_rk22q")
 stretch_mode = 3
+
+[connection signal="join_game" from="main menu/VBoxContainer/HBoxContainer/VBoxContainer/join game panel" to="main menu/VBoxContainer/HBoxContainer/VBoxContainer/lobby display panel" method="_on_join_game_panel_join_game"]
