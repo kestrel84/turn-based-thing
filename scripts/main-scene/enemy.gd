@@ -9,6 +9,8 @@ extends Node2D
 
 var health: int
 
+var dead: bool = false
+
 var current_map_pos: Vector2i # the current position of the enemy in map coords
 
 @export var attack: Node2D
@@ -21,6 +23,10 @@ func _ready() -> void:
 	map.hittable_objects[current_map_pos] = on_hit
 	gamemaster.turn_changed.connect(func (turn): 
 		if (turn == TURN_ID):
+			if (dead):
+				gamemaster.turn -= 1
+				return
+			
 			if (attack.attacking):
 				attack.attack()
 			attack.start_attacking()
@@ -44,4 +50,5 @@ func die():
 	print("woe, I am slain")
 	map.enable_tile_global(global_position)
 	map.hittable_objects.erase(current_map_pos)
-	self.queue_free()
+	dead = true;
+	self.get_parent().remove_child(self)

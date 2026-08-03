@@ -43,7 +43,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	handle_input()
+	#handle_input()
 	
 	if attack_1.attacking:
 		attack_1.attack_angle = to_local(get_global_mouse_position()).angle()
@@ -51,8 +51,10 @@ func _process(_delta: float) -> void:
 		attack_2.attack_angle = to_local(get_global_mouse_position()).angle()
 	
 
-func handle_input():
-	if Input.is_action_just_pressed("click"):
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("click"):
 		if attack_1.attacking:
 			attack_1.attack()
 			cursor.visible = true
@@ -66,7 +68,7 @@ func handle_input():
 		else:
 			_move()
 	
-	if Input.is_action_just_pressed("attack one"):
+	if event.is_action_pressed("attack one"):
 		if attack_1.attacking:
 			attack_1.cancel_attack()
 			cursor.visible = true
@@ -78,7 +80,7 @@ func handle_input():
 				cursor.visible = false
 				attack_1.start_attacking()
 	
-	if Input.is_action_just_pressed("attack two"):
+	if event.is_action_pressed("attack two"):
 		if attack_1.attacking:
 			attack_1.cancel_attack()
 			cursor.visible = true
@@ -90,7 +92,7 @@ func handle_input():
 				cursor.visible = false
 				attack_2.start_attacking()
 	
-	if Input.is_action_just_pressed("right click"):
+	if event.is_action_pressed("right click"):
 		if attack_1.attacking:
 			attack_1.cancel_attack()
 			cursor.visible = true

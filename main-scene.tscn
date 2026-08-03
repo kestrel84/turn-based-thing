@@ -170,6 +170,7 @@ offset_left = -576.0
 offset_top = -324.0
 offset_right = 576.0
 offset_bottom = 324.0
+mouse_filter = 2
 script = ExtResource("15_lyro5")
 
 [node name="turn indicator" type="Label" parent="ui" unique_id=750737427]
