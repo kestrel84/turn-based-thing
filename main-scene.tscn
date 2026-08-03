@@ -47,6 +47,7 @@ sources/2 = SubResource("TileSetAtlasSource_im6mf")
 [node name="gamemaster" type="Node2D" parent="." unique_id=479281941]
 unique_name_in_owner = true
 script = ExtResource("1_r7pl7")
+NUM_ENEMIES = 5
 
 [node name="map" type="TileMapLayer" parent="." unique_id=1356303301]
 unique_name_in_owner = true
@@ -58,6 +59,7 @@ display_coords = false
 [node name="camera" type="Camera2D" parent="." unique_id=1286385923]
 
 [node name="player" type="Sprite2D" parent="." unique_id=2060810026 groups=["players"]]
+unique_name_in_owner = true
 position = Vector2(0, -16.5)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("6_slrkl")
@@ -74,8 +76,10 @@ script = ExtResource("10_8opmy")
 width = 41.085
 
 [node name="attack-arc" parent="player" unique_id=946821444 instance=ExtResource("11_qyw6v")]
+scale = Vector2(3.7, 3.7)
 
 [node name="attack-line" parent="player" unique_id=633335252 instance=ExtResource("12_fa8gu")]
+scale = Vector2(3.7, 3.7)
 
 [node name="actions display" type="VFlowContainer" parent="player" unique_id=684888105]
 anchors_preset = -1
@@ -97,16 +101,67 @@ offset_right = -63.943115
 offset_bottom = -63.9449
 alignment = 2
 
-[node name="enemy" type="Node2D" parent="." unique_id=1567290742 node_paths=PackedStringArray("attack") groups=["enemies"]]
-position = Vector2(-99.2, -13.775)
+[node name="enemies" type="Node2D" parent="." unique_id=80618839]
+position = Vector2(-576, -324)
+
+[node name="enemy" type="Node2D" parent="enemies" unique_id=1567290742 node_paths=PackedStringArray("attack") groups=["enemies"]]
+position = Vector2(476.8, 516.68)
 script = ExtResource("13_tova5")
 attack = NodePath("attack-line")
 
-[node name="enemy sprite" type="Sprite2D" parent="enemy" unique_id=1451242318]
+[node name="enemy sprite" type="Sprite2D" parent="enemies/enemy" unique_id=1451242318]
 scale = Vector2(0.14833334, 0.14833334)
 texture = ExtResource("14_ps7dk")
 
-[node name="attack-line" parent="enemy" unique_id=63181736 instance=ExtResource("12_fa8gu")]
+[node name="attack-line" parent="enemies/enemy" unique_id=63181736 instance=ExtResource("12_fa8gu")]
+
+[node name="enemy2" type="Node2D" parent="enemies" unique_id=2026726641 node_paths=PackedStringArray("attack") groups=["enemies"]]
+position = Vector2(922, 359)
+script = ExtResource("13_tova5")
+TURN_ID = -2
+attack = NodePath("attack-line")
+
+[node name="enemy sprite" type="Sprite2D" parent="enemies/enemy2" unique_id=1157193005]
+scale = Vector2(0.14833334, 0.14833334)
+texture = ExtResource("14_ps7dk")
+
+[node name="attack-line" parent="enemies/enemy2" unique_id=636727501 instance=ExtResource("12_fa8gu")]
+
+[node name="enemy3" type="Node2D" parent="enemies" unique_id=1443593216 node_paths=PackedStringArray("attack") groups=["enemies"]]
+position = Vector2(575, 97)
+script = ExtResource("13_tova5")
+TURN_ID = -3
+attack = NodePath("attack-line")
+
+[node name="enemy sprite" type="Sprite2D" parent="enemies/enemy3" unique_id=34307136]
+scale = Vector2(0.14833334, 0.14833334)
+texture = ExtResource("14_ps7dk")
+
+[node name="attack-line" parent="enemies/enemy3" unique_id=303730581 instance=ExtResource("12_fa8gu")]
+
+[node name="enemy4" type="Node2D" parent="enemies" unique_id=127455991 node_paths=PackedStringArray("attack") groups=["enemies"]]
+position = Vector2(524, 253)
+script = ExtResource("13_tova5")
+TURN_ID = -4
+attack = NodePath("attack-arc")
+
+[node name="enemy sprite" type="Sprite2D" parent="enemies/enemy4" unique_id=1054498486]
+scale = Vector2(0.14833334, 0.14833334)
+texture = ExtResource("14_ps7dk")
+
+[node name="attack-arc" parent="enemies/enemy4" unique_id=1372594874 instance=ExtResource("11_qyw6v")]
+
+[node name="enemy5" type="Node2D" parent="enemies" unique_id=47414256 node_paths=PackedStringArray("attack") groups=["enemies"]]
+position = Vector2(675, 413)
+script = ExtResource("13_tova5")
+TURN_ID = -5
+attack = NodePath("attack-arc")
+
+[node name="enemy sprite" type="Sprite2D" parent="enemies/enemy5" unique_id=574832199]
+scale = Vector2(0.14833334, 0.14833334)
+texture = ExtResource("14_ps7dk")
+
+[node name="attack-arc" parent="enemies/enemy5" unique_id=1469522225 instance=ExtResource("11_qyw6v")]
 
 [node name="ui" type="Control" parent="." unique_id=1698161239]
 layout_mode = 3

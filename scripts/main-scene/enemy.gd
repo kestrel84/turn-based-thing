@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var map = $"%map"
 @onready var gamemaster = $"%gamemaster"
-@onready var player = $"../player"
+@onready var player = $"%player"
 
 @export var MAX_HEALTH: int = 4
 @export var TURN_ID: int = -1

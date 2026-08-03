@@ -38,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_m75jt")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 12.0
 }]
@@ -51,7 +51,6 @@ attack_anim = NodePath("explosion sprite")
 [node name="attack sprite" type="Sprite2D" parent="." unique_id=1372715383]
 visible = false
 position = Vector2(0, -5.5555553)
-scale = Vector2(3.7, 3.7)
 texture = ExtResource("1_lwpe1")
 
 [node name="explosion sprite" type="AnimatedSprite2D" parent="." unique_id=1679945638]
